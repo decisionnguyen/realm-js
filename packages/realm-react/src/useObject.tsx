@@ -81,7 +81,7 @@ export function createUseObject(useRealm: () => Realm) {
         // Re-instantiate the cachedObject if the primaryKey has changed or the originalObject has gone from null to not null
         if (
           !arePrimaryKeysIdentical(primaryKey, primaryKeyRef.current) ||
-          (originalObjectRef.current === null && originalObject !== null)
+          (!originalObjectRef.current && originalObject !== null)
         ) {
           cachedObjectRef.current = createCachedObject({
             object: originalObject ?? null,
